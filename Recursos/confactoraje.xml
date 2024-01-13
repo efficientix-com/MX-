@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Total="0" TipoDeComprobante="P" SubTotal="0"
+                  Serie="FAC"
+                  Sello="OeSdl7ulO0clPu2+awcB/HwdkkQ/EXeS5t37nQo99GEk3LKibUT8vfPsI1wzoOh1USLFs2pA47n5dur490Eq8T3rTt9B/xdoqZtbLZ9WLvQCB68goJfLWtGuAOPHVrGu2rrohGdXoGMx4RcVgLuiaX+hh0OIBY95ZHZ2RdfnM+UuVPkiydv/Owc3X9d0wdAhgBoLwJRW5sc5JdEIjinCD623eylQh6jyvUgyzCAI1ef/fJf5q9s5vUBB+UahBx21iFj5Bi42esmcdruywZxCUV4INeTMo+wUKHKKVlNbyD2lktl3Xk6aC5A+Ontwk5nr+cigDmse2v2WCQjHAgZA6Q=="
+                  NoCertificado="00001000000404467487" Moneda="XXX"
+                  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd  http://www.sat.gob.mx/Pagos http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos10.xsd"
+                  LugarExpedicion="64420" Version="3.3" Folio="PMAS2360"
+                  Certificado="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"
+                  Fecha="2020-06-26T13:53:01" xmlns:cfdi="http://www.sat.gob.mx/cfd/3">
+    <cfdi:Emisor Nombre="Mercado de Arenas Silicas SA de CV" RegimenFiscal="601" Rfc="MAS8803256L8"/>
+    <cfdi:Receptor Nombre="E FACTOR DIEZ SAPI DE CV SOFOM ENR" Rfc="FDI0906152A1" UsoCFDI="P01"/>
+    <cfdi:Conceptos>
+        <cfdi:Concepto Cantidad="1" ClaveProdServ="84111506" ClaveUnidad="ACT" Descripcion="Pago" Importe="0"
+                       ValorUnitario="0"/>
+    </cfdi:Conceptos>
+    <cfdi:Complemento>
+        <pago10:Pagos Version="1.0" xmlns:pago10="http://www.sat.gob.mx/Pagos">
+            <pago10:Pago FechaPago="2020-06-17T14:45:01" FormaDePagoP="03" MonedaP="USD" TipoCambioP="22.2168"
+                         Monto="47735.31">
+                <pago10:DoctoRelacionado IdDocumento="58d711d7-dc69-4a10-aa4f-daa37282111e" Serie="FAC"
+                                         Folio="INVMAS6108" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3520.75" ImpSaldoInsoluto="26.15" ImpPagado="3494.60"/>
+                <pago10:DoctoRelacionado IdDocumento="664c67d4-6ee6-4585-9664-c34c35f9ee84" Serie="FAC"
+                                         Folio="INVMAS6109" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3524.21" ImpSaldoInsoluto="26.18" ImpPagado="3498.03"/>
+                <pago10:DoctoRelacionado IdDocumento="eea67b6e-df19-4f74-b899-467a4ff6ac78" Serie="FAC"
+                                         Folio="INVMAS6110" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3303.22" ImpSaldoInsoluto="24.54" ImpPagado="3278.68"/>
+                <pago10:DoctoRelacionado IdDocumento="6dee1679-a68c-43d6-8da7-0e52e7b5bf17" Serie="FAC"
+                                         Folio="INVMAS6122" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3887.86" ImpSaldoInsoluto="28.88" ImpPagado="3858.98"/>
+                <pago10:DoctoRelacionado IdDocumento="a9cde635-252d-47c9-948b-56c4abdcafb4" Serie="FAC"
+                                         Folio="INVMAS6123" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3576.06" ImpSaldoInsoluto="26.56" ImpPagado="3549.50"/>
+                <pago10:DoctoRelacionado IdDocumento="2e7529fc-1534-45e0-ae68-489b7b6491ca" Serie="FAC"
+                                         Folio="INVMAS6124" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3385.93" ImpSaldoInsoluto="25.15" ImpPagado="3360.78"/>
+                <pago10:DoctoRelacionado IdDocumento="c0a5fa89-9daa-4d70-af3b-9e1116d79a3c" Serie="FAC"
+                                         Folio="INVMAS6140" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3629.64" ImpSaldoInsoluto="26.96" ImpPagado="3602.68"/>
+                <pago10:DoctoRelacionado IdDocumento="60ead1f6-78a0-41e6-b4ab-4b1697fd5ae4" Serie="FAC"
+                                         Folio="INVMAS6142" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3557.05" ImpSaldoInsoluto="26.42" ImpPagado="3530.63"/>
+                <pago10:DoctoRelacionado IdDocumento="6f6100e3-5f7b-48f1-b7c4-0088c5468066" Serie="FAC"
+                                         Folio="INVMAS6143" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3489.64" ImpSaldoInsoluto="25.92" ImpPagado="3463.72"/>
+                <pago10:DoctoRelacionado IdDocumento="91aff3d7-ce73-45fd-a3cc-a77b6c383036" Serie="FAC"
+                                         Folio="INVMAS6144" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3544.95" ImpSaldoInsoluto="26.33" ImpPagado="3518.62"/>
+                <pago10:DoctoRelacionado IdDocumento="7de9ee4f-abe8-4015-8208-d0c804876fbb" Serie="FAC"
+                                         Folio="INVMAS6145" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3363.3" ImpSaldoInsoluto="24.98" ImpPagado="3338.32"/>
+                <pago10:DoctoRelacionado IdDocumento="fc0e337b-f3d3-4f51-a424-ded7f6fedbaa" Serie="FAC"
+                                         Folio="INVMAS6146" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3042.18" ImpSaldoInsoluto="22.60" ImpPagado="3019.58"/>
+                <pago10:DoctoRelacionado IdDocumento="d14a4251-44f3-4c50-a0b6-213a99dfc46b" Serie="FAC"
+                                         Folio="INVMAS6147" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3037.69" ImpSaldoInsoluto="22.56" ImpPagado="3015.13"/>
+                <pago10:DoctoRelacionado IdDocumento="93a42e57-9acf-4de7-b71d-d30d54a53a97" Serie="FAC"
+                                         Folio="INVMAS6148" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1"
+                                         ImpSaldoAnt="3230.05" ImpSaldoInsoluto="23.99" ImpPagado="3206.06"/>
+            </pago10:Pago>
+            <pago10:Pago FechaPago="2020-06-17T14:45:01" FormaDePagoP="17" MonedaP="USD" TipoCambioP="22.2168"
+                         Monto="357.22">
+                <pago10:DoctoRelacionado IdDocumento="58d711d7-dc69-4a10-aa4f-daa37282111e" Serie="FAC"
+                                         Folio="INVMAS6108" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.15" ImpPagado="26.15" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="664c67d4-6ee6-4585-9664-c34c35f9ee84" Serie="FAC"
+                                         Folio="INVMAS6109" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.18" ImpPagado="26.18" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="eea67b6e-df19-4f74-b899-467a4ff6ac78" Serie="FAC"
+                                         Folio="INVMAS6110" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="24.54" ImpPagado="24.54" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="6dee1679-a68c-43d6-8da7-0e52e7b5bf17" Serie="FAC"
+                                         Folio="INVMAS6122" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="28.88" ImpPagado="28.88" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="a9cde635-252d-47c9-948b-56c4abdcafb4" Serie="FAC"
+                                         Folio="INVMAS6123" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.56" ImpPagado="26.56" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="2e7529fc-1534-45e0-ae68-489b7b6491ca" Serie="FAC"
+                                         Folio="INVMAS6124" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="25.15" ImpPagado="25.15" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="c0a5fa89-9daa-4d70-af3b-9e1116d79a3c" Serie="FAC"
+                                         Folio="INVMAS6140" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.96" ImpPagado="26.96" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="60ead1f6-78a0-41e6-b4ab-4b1697fd5ae4" Serie="FAC"
+                                         Folio="INVMAS6142" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.42" ImpPagado="26.42" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="6f6100e3-5f7b-48f1-b7c4-0088c5468066" Serie="FAC"
+                                         Folio="INVMAS6143" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="25.92" ImpPagado="25.92" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="91aff3d7-ce73-45fd-a3cc-a77b6c383036" Serie="FAC"
+                                         Folio="INVMAS6144" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="26.33" ImpPagado="26.33" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="7de9ee4f-abe8-4015-8208-d0c804876fbb" Serie="FAC"
+                                         Folio="INVMAS6145" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="24.98" ImpPagado="24.98" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="fc0e337b-f3d3-4f51-a424-ded7f6fedbaa" Serie="FAC"
+                                         Folio="INVMAS6146" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="22.6" ImpPagado="22.6" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="d14a4251-44f3-4c50-a0b6-213a99dfc46b" Serie="FAC"
+                                         Folio="INVMAS6147" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="22.56" ImpPagado="22.56" ImpSaldoInsoluto="0"/>
+                <pago10:DoctoRelacionado IdDocumento="93a42e57-9acf-4de7-b71d-d30d54a53a97" Serie="FAC"
+                                         Folio="INVMAS6148" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="23.99" ImpPagado="23.99" ImpSaldoInsoluto="0"/>
+            </pago10:Pago>
+        </pago10:Pagos>
+        <tfd:TimbreFiscalDigital xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                 xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd"
+                                 FechaTimbrado="2020-06-26T15:53:03" NoCertificadoSAT="00001000000408254801"
+                                 RfcProvCertif="LSO1306189R5"
+                                 SelloCFD="OeSdl7ulO0clPu2+awcB/HwdkkQ/EXeS5t37nQo99GEk3LKibUT8vfPsI1wzoOh1USLFs2pA47n5dur490Eq8T3rTt9B/xdoqZtbLZ9WLvQCB68goJfLWtGuAOPHVrGu2rrohGdXoGMx4RcVgLuiaX+hh0OIBY95ZHZ2RdfnM+UuVPkiydv/Owc3X9d0wdAhgBoLwJRW5sc5JdEIjinCD623eylQh6jyvUgyzCAI1ef/fJf5q9s5vUBB+UahBx21iFj5Bi42esmcdruywZxCUV4INeTMo+wUKHKKVlNbyD2lktl3Xk6aC5A+Ontwk5nr+cigDmse2v2WCQjHAgZA6Q=="
+                                 SelloSAT="Yy6uyfD9HAQnjFkpCip+4VlDKLZCdMDSMUyCPvMFVYWSE9VE/mLrCgbXMOYjYPLdzbYc+hmcehFq/zPOvh6rVl0MwWoJFxWLvsvyvuKWIsoUtZuPtiQi0dcSaY/J6UgoEPZ6FQu19gwf4d45Vzedgk7T9qjfVxqHH/7bNtOebT2z8smysZ86ThS6u9DInGMasb7meo3XKp440hqvHeI3a51qr5e4A34js0W8Bcb/ve2FY3INLg+Pa9q3NbuQZy2uyI/LeTnfpW9dZWlCGc6vqJumRbbP5WMzMBCZ8J/IapmeTkaZtJnglcWtn9PRittwBq6E8gwAZbYCGgnidmeatg=="
+                                 UUID="000eddf7-0937-4232-98cb-96830dd23bcd" Version="1.1"
+                                 xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital"/>
+    </cfdi:Complemento>

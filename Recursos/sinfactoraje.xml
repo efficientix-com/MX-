@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Total="0" TipoDeComprobante="P" SubTotal="0"
+                  Serie="FAC"
+                  Sello="K/WsLPvAmbUs+sTiLnikG2bFcGQjtYLb0IxepYeY7pANpD8VddC+AopOlmtFptVhBwEMsBfcmo2FPoOMh+2XlHGBbT974eLLZZ3D91fWmJEmKK/CYMW6uC58ZRlugMgH4Ju94mog4K4fjm8tMPjwy1K0zIm2CmJ6sXRg4QCqoMpEugHD5p8dfPjMfoi7IkYbJppVwrRiUAoo1DddM5HbiuSQfvBwPovA6oHq2nKh2QEzFoWzxwu2693gnSlxAKhP8xElDyz4MtndazqAtSdSoUISyPADJiNepoYxYrCh30Ec8GpaIWnQ4boizEipIL7fLVtWHICurrVyz89fNNtNvg=="
+                  NoCertificado="00001000000404467487" Moneda="XXX"
+                  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd  http://www.sat.gob.mx/Pagos http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos10.xsd"
+                  LugarExpedicion="64420" Version="3.3" Folio="PMAS2387"
+                  Certificado="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"
+                  Fecha="2020-06-19T07:39:51" xmlns:cfdi="http://www.sat.gob.mx/cfd/3">
+    <cfdi:Emisor Nombre="Mercado de Arenas Silicas SA de CV" RegimenFiscal="601" Rfc="MAS8803256L8"/>
+    <cfdi:Receptor Nombre="U.S. PIPE MEXICO, S DE RL DE CV" Rfc="UPM141010G97" UsoCFDI="P01"/>
+    <cfdi:Conceptos>
+        <cfdi:Concepto Cantidad="1" ClaveProdServ="84111506" ClaveUnidad="ACT" Descripcion="Pago" Importe="0"
+                       ValorUnitario="0"/>
+    </cfdi:Conceptos>
+    <cfdi:Complemento>
+        <pago10:Pagos Version="1.0" xmlns:pago10="http://www.sat.gob.mx/Pagos">
+            <pago10:Pago FechaPago="2020-06-18T09:39:35" FormaDePagoP="03" MonedaP="MXN" RfcEmisorCtaBen="BMN930209927"
+                         Monto="12667.20">
+                <pago10:DoctoRelacionado IdDocumento="9b85bc36-8d6f-4cca-a6fd-aaca59666134" Serie="FAC"
+                                         Folio="INVMAS5771" MonedaDR="MXN" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="6333.6" ImpSaldoInsoluto="0.00" ImpPagado="6333.60"/>
+                <pago10:DoctoRelacionado IdDocumento="f22a0383-5cb8-4602-80e9-71bf7435a233" Serie="FAC"
+                                         Folio="INVMAS5853" MonedaDR="MXN" MetodoDePagoDR="PPD" NumParcialidad="2"
+                                         ImpSaldoAnt="6333.6" ImpSaldoInsoluto="0.00" ImpPagado="6333.60"/>
+            </pago10:Pago>
+        </pago10:Pagos>
+        <tfd:TimbreFiscalDigital xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                 xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd"
+                                 FechaTimbrado="2020-06-19T09:39:52" NoCertificadoSAT="00001000000408254801"
+                                 RfcProvCertif="LSO1306189R5"
+                                 SelloCFD="K/WsLPvAmbUs+sTiLnikG2bFcGQjtYLb0IxepYeY7pANpD8VddC+AopOlmtFptVhBwEMsBfcmo2FPoOMh+2XlHGBbT974eLLZZ3D91fWmJEmKK/CYMW6uC58ZRlugMgH4Ju94mog4K4fjm8tMPjwy1K0zIm2CmJ6sXRg4QCqoMpEugHD5p8dfPjMfoi7IkYbJppVwrRiUAoo1DddM5HbiuSQfvBwPovA6oHq2nKh2QEzFoWzxwu2693gnSlxAKhP8xElDyz4MtndazqAtSdSoUISyPADJiNepoYxYrCh30Ec8GpaIWnQ4boizEipIL7fLVtWHICurrVyz89fNNtNvg=="
+                                 SelloSAT="LX0WJ66I2aHzTMxOxH/DOSRnw9fEFSJgYCsDmy0XvEt9sH7oqmszhWp4zRkLHZkaDaVtgImOSWdzBDTHOCfZKxVD/J8ECiGvHKW8yTV1B1vwpWes20e5ObrftPSRsMHKO60KGc/PR9hzQFcxEyiIQm65EHxpsRdSnsNfH4SCmdjQF0NJZE8SXTgaAKeRYtqd/C3S75izmi4XQbsx/RdyCDCa/URri+AwDCLZJ7KzlPd/cRcAwYH+2er02iKPoiNyWgoItetLROLrJGax+qTxs6K+13qS44PSC/LPnAscU8gcHtgSApY9CHDaZMa8Ao6urNyh9rT4ajEodQQPFJs0uQ=="
+                                 UUID="04ebd8b4-00b8-4bc7-8d15-c93f78a50171" Version="1.1"
+                                 xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital"/>
+    </cfdi:Complemento>
+</cfdi:Comprobante>

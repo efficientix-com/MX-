@@ -1,0 +1,712 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+    <#setting locale = "es_MX">
+    <#setting time_zone= "America/Mexico_City">
+    <#setting number_format=",##0.0000">
+
+    <#if custom?has_content>
+    <!--#setting locale=custom.locale-->
+    <#assign labels = custom.labels>
+    <#if custom.certData?has_content>
+    <#assign "certData" = custom.certData>
+    <#else>
+    <#assign "certData" = record>
+</#if>
+<#assign "satCodes" = custom.satcodes>
+
+<#if custom.multiCurrencyFeature == "true">
+<#assign "currencyCode" = record.currencysymbol>
+<#assign exchangeRate = record.exchangerate?string.number>
+<#else>
+<#assign "currencyCode" = "MXN">
+<#assign exchangeRate = 1>
+</#if>
+<#if custom.oneWorldFeature == "true">
+<#assign customCompanyInfo = record.subsidiary>
+<#else>
+<#assign "customCompanyInfo" = companyinformation>
+</#if>
+<#if customer.isperson == "T">
+<#assign customerName = customer.firstname + ' ' + customer.lastname>
+<#else>
+<#assign "customerName" = customer.companyname>
+</#if>
+<#assign "summary" = custom.summary>
+<#assign "totalAmount" = summary.subtotal - summary.totalDiscount>
+<#assign "companyTaxRegNumber" = custom.companyInfo.rfc>
+<#assign currencySymbolMap = {"USD":"$","CAD":"$","EUR":"€","AED":"د.إ.‏","AFN":"؋","ALL":"Lek","AMD":"դր.","ARS":"$","AUD":"$","AZN":"ман.","BAM":"KM","BDT":"৳","BGN":"лв.","BHD":"د.ب.‏","BIF":"FBu","BND":"$","BOB":"Bs","BRL":"R$","BWP":"P","BYR":"BYR","BZD":"$","CDF":"FrCD","CHF":"CHF","CLP":"$","CNY":"CN¥","COP":"$","CRC":"₡","CVE":"CV$","CZK":"Kč","DJF":"Fdj","DKK":"kr","DOP":"RD$","DZD":"د.ج.‏","EEK":"kr","EGP":"ج.م.‏","ERN":"Nfk","ETB":"Br","GBP":"£","GEL":"GEL","GHS":"GH₵","GNF":"FG","GTQ":"Q","HKD":"$","HNL":"L","HRK":"kn","HUF":"Ft","IDR":"Rp","ILS":"₪","INR":"টকা","IQD":"د.ع.‏","IRR":"﷼","ISK":"kr","JMD":"$","JOD":"د.أ.‏","JPY":"￥","KES":"Ksh","KHR":"៛","KMF":"FC","KRW":"₩","KWD":"د.ك.‏","KZT":"тңг.","LBP":"ل.ل.‏","LKR":"SL Re","LTL":"Lt","LVL":"Ls","LYD":"د.ل.‏","MAD":"د.م.‏","MDL":"MDL","MGA":"MGA","MKD":"MKD","MMK":"K","MOP":"MOP$","MUR":"MURs","MXN":"$","MYR":"RM","MZN":"MTn","NAD":"N$","NGN":"₦","NIO":"C$","NOK":"kr","NPR":"नेरू","NZD":"$","OMR":"ر.ع.‏","PAB":"B/.","PEN":"S/.","PHP":"₱","PKR":"₨","PLN":"zł","PYG":"₲","QAR":"ر.ق.‏","RON":"RON","RSD":"дин.","RUB":"руб.","RWF":"FR","SAR":"ر.س.‏","SDG":"SDG","SEK":"kr","SGD":"$","SOS":"Ssh","SYP":"ل.س.‏","THB":"฿","TND":"د.ت.‏","TOP":"T$","TRY":"TL","TTD":"$","TWD":"NT$","TZS":"TSh","UAH":"₴","UGX":"USh","UYU":"$","UZS":"UZS","VEF":"Bs.F.","VND":"₫","XAF":"FCFA","XOF":"CFA","YER":"ر.ي.‏","ZAR":"R","ZMK":"ZK"}>
+<#function fmtc value>
+<#assign dst =  currencySymbolMap[currencyCode] + value?number?string[",##0.00"]>
+<#return dst>
+</#function>
+</#if>
+<head>
+    <#assign "shipmentcost" = 0>
+    <link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}" src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}" src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+    <#if .locale == "zh_CN">
+    <link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}" src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+    <#elseif .locale == "zh_TW">
+    <link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}" src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+    <#elseif .locale == "ja_JP">
+    <link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}" src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+    <#elseif .locale == "ko_KR">
+    <link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}" src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+    <#elseif .locale == "th_TH">
+    <link name="NotoSansThai" type="font" subtype="opentype" src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+</#if>
+
+<#assign addressCancelado=''>
+<#if record.custbody_efx_fe_cfdi_cancelled== true >
+<#assign addressCancelado= 'FACTURA CANCELADA'>
+</#if>
+<macrolist>
+    <macro id="watermark">
+        <p
+                id="watermarkbody"
+                rotate="-30"
+                valign="middle"
+                align="center"
+                class="cancelada">
+            ${addressCancelado}
+        </p>
+    </macro>
+    <macro id="nlheader">
+        <table class="header" style="width: 100%;">
+            <tr>
+                <td colspan="6" rowspan="3">
+                    <#if certData?has_content>
+                    <#if record.custbody_efx_fe_logosub?has_content>
+                    <img height="35%" src="${record.custbody_efx_fe_logosub}" style="float: left; margin: 2px" width="30%" />
+                </#if>
+                <#else>
+                <#if record.custbody_efx_fe_logosub?has_content>
+                <#if subsidiary.logo@url?length != 0>
+                <img height="35%" src="${subsidiary.logo@url}" style="float: left; margin: 2px" width="30%" />
+                <#elseif companyInformation.logoUrl?length != 0>
+                <img height="35%" src="${companyInformation.logoUrl}" style="float: left; margin: 2px" width="30%" />
+            </#if>
+        </#if>
+    </#if>
+
+    </td>
+    <td colspan="6" rowspan="3">
+        <span class="nameandaddress" style="font-size: 9px; width: 40%;" >${record.custbody_efx_fe_dirsubs?upper_case} <br /> ${customCompanyInfo.federalidnumber}</span>
+    </td>
+    <td colspan="2" style="width: 21px;">&nbsp;</td>
+    <td colspan="4" style="font-size: 10px;" align="right"><span style="font-size: 12px;"><strong>FACTURA</strong></span><br />
+        <#if record.custbody_efx_fe_kiosko_folio?has_content>
+        <span class="number" style="font-size: 14px;">${record.custbody_efx_fe_kiosko_folio}</span>
+        <#else>
+        <span class="number" style="font-size: 14px;">${record.tranid}</span>
+    </#if>
+
+    <br /> <br /><b>${record.cseg_efx_cstsg_cana}</b><br />Fecha y hora de emisi&oacute;n<br />${record.createddate?date} ${record.createddate?time}<br />
+
+    </td>
+    <td align="right">
+        <span class="number"><!--#${record.tranid}--></span>
+    </td>
+    </tr>
+    </table>
+    </macro>
+
+
+    <macro id="nlfooter">
+        <table class="footer" style="width: 100%;"><tr>
+            <td><barcode codetype="code128" showtext="true" value="${record.tranid}"/></td>
+            <td align="right"><pagenumber/> de <totalpages/></td>
+        </tr></table>
+    </macro>
+</macrolist>
+<style type="text/css">* {
+    <#if .locale == "zh_CN">
+    font-family: NotoSans, NotoSansCJKsc, sans-serif;
+    <#elseif .locale == "zh_TW">
+    font-family: NotoSans, NotoSansCJKtc, sans-serif;
+    <#elseif .locale == "ja_JP">
+    font-family: NotoSans, NotoSansCJKjp, sans-serif;
+    <#elseif .locale == "ko_KR">
+    font-family: NotoSans, NotoSansCJKkr, sans-serif;
+    <#elseif .locale == "th_TH">
+    font-family: NotoSans, NotoSansThai, sans-serif;
+    <#else>
+    font-family: NotoSans, sans-serif;
+    </#if>
+}
+table {
+    font-size: 9pt;
+    table-layout: fixed;
+    border-color: #e3e3e3;
+}
+th {
+    font-weight: bold;
+    font-size: 8pt;
+    vertical-align: middle;
+    padding: 5px 6px 3px;
+    background-color: #e3e3e3;
+    color: #333333;
+}
+td {
+    padding: 4px 6px;
+}
+td p { align:left }
+b {
+    font-weight: bold;
+    color: #000000;
+}
+table.header td {
+    padding: 0;
+    font-size: 10pt;
+}
+table.footer td {
+    padding: 0;
+    font-size: 8pt;
+}
+table.itemtable th {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+table.desglose td {
+    font-size: 4pt;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+table.body td {
+    padding-top: 2px;
+}
+table.total {
+    page-break-inside: avoid;
+}
+tr.totalrow {
+    background-color: #e3e3e3;
+    line-height: 200%;
+}
+td.totalboxtop {
+    font-size: 10pt;
+    background-color: #e3e3e3;
+}
+td.addressheader {
+    font-size: 10pt;
+    padding-top: 6px;
+    padding-bottom: 2px;
+}
+td.subtotal{
+    text-align: right;
+}
+td.address {
+    padding-top: 0;
+}
+td.totalboxmid {
+    font-size: 28pt;
+    padding-top: 20px;
+    background-color: #e3e3e3;
+}
+td.totalboxbot {
+    background-color: #e3e3e3;
+    font-weight: bold;
+}
+span.title {
+    font-size: 28pt;
+}
+span.number {
+    font-size: 16pt;
+}
+span.itemname {
+    font-weight: bold;
+    line-height: 150%;
+}
+.cancelada {
+    text-align: center;
+    color: rgb(255, 102, 102);
+    font-weight: bold;
+    font-size: 100px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+hr {
+    width: 100%;
+    color: #333333;
+    background-color: #e3e3e3;
+    height: 1px;
+}
+</style>
+</head>
+<body header="nlheader" header-height="8%" footer="nlfooter" footer-height="20pt" padding="0.5in 0.5in 0.5in 0.5in" size="Letter">
+<#assign "desglosa_cliente" = record.entity.custentity_efx_cmp_registra_ieps>
+
+<#assign totalivaimp = 0/>
+<#assign totaldiscount = 0/>
+<#assign totaliepsimp = 0/>
+<table style="width: 100%; margin-top: 0px;"><tr>
+    <td class="body" colspan="14" style="background-color: #e3e3e3; font-size:10px;"><b>Cliente</b></td>
+    <td></td>
+    <td class="body" colspan="14" style="background-color: #e3e3e3; font-size:10px"><b>Lugar de Entrega</b></td>
+</tr>
+    <tr>
+        <td class="address" colspan="14" rowspan="2" style="border: 1px; border-color: #e3e3e3; font-size: 10px; padding-top:5px">${record.entity.companyname?upper_case}<br/>${record.billaddress?upper_case}<br/>RFC: ${record.custbody_mx_customer_rfc}<br/>NO. DE CLIENTE: ${record.entity.entityid?upper_case}</td>
+        <td></td>
+        <td align="left" colspan="14" style="border: 1px; border-color: #e3e3e3; font-size: 10px; padding-top:5px">${record.shipaddress?upper_case} </td>
+    </tr>
+</table>
+
+<table class="body" style="width: 100%; margin-top: 9px;"><tr>
+    <th colspan="3">Términos de crédito</th>
+    <th colspan="3">Referencia cliente</th>
+    <th colspan="3">Orden de venta</th>
+    <th colspan="3">Cotizaci&oacute;n</th>
+    <th colspan="3">No. de pedido</th>
+    <th colspan="3">No. cita</th>
+</tr>
+    <tr>
+        <td colspan="3" style="font-size:9px;">${record.entity.terms}</td>
+        <td colspan="3" style="font-size:9px;">${record.entity.custentity_efx_cmp_referencia}</td>
+        <td colspan="3" style="font-size:9px;">${record.createdfrom?keep_after("#")}</td>
+        <td colspan="3" style="font-size:9px;">${record.createdfrom.createdfrom?keep_after("#")}</td>
+        <td colspan="3" style="font-size:9px;">${record.otherrefnum}</td>
+        <td colspan="3" style="font-size:9px;">${record.custbody_efx_cmp_no_cita}</td>
+    </tr>
+</table>
+
+
+<!--<table style="width: 100%; margin-top: 10px;"><tr>
+    <td class="addressheader" colspan="6" style="color: #333333; background-color: #e3e3e3;"><b>Facturar a</b></td>
+    <td></td>
+    <td class="totalboxtop" colspan="6" style="color: #333333; background-color: #e3e3e3;"><b>Total</b></td>
+</tr>
+    <tr>
+        <td class="addressheader" colspan="6"  style="border: 1px; border-color: #e3e3e3;">${record.billaddress}</td>
+        <td></td>
+        <td align="right" class="totalboxmid" colspan="6"  style="border: 1px; border-color: #e3e3e3;">${record.total}</td>
+    </tr></table>
+
+<table class="body" style="width: 100%; margin-top: 10px;"><tr>
+    <th>${record.otherrefnum@label}</th>
+    <th>${record.job@label}</th>
+    <th>${record.shipmethod@label}</th>
+</tr>
+    <tr>
+        <td>${record.otherrefnum}</td>
+        <td>${record.job}</td>
+        <td>${record.shipmethod}</td>
+    </tr></table>-->
+<#if record.item?has_content><#assign "total_cajas" = 0><#assign "total_piezas" = 0>
+
+<#assign "obj_cajas"= {}>
+
+
+<#assign "line_discount"= 0>
+<#assign "importe_discount" = []>
+<#list record.item as item>
+<#assign "tipo_articulo" = item.item?keep_before(" ")>
+<#if tipo_articulo == "Descuento">
+<#assign "importe_discount" = importe_discount+ [item.grossamt]>
+<#else>
+<#assign "importe_discount" = importe_discount+ [0]>
+</#if>
+</#list>
+<#assign "importe_discount" = importe_discount+ [0]>
+<#assign "descuento_total" = 0>
+
+<!--CODIGO RAUL-->
+<#assign "subtotalwithieps" = 0>
+<#assign "linecount" = 0/>
+<table class="itemtable" style="width: 100%; margin-top: 5px; border: 1px; border-color: #e3e3e3;"><#list record.item as item><#if item_index==0>
+    <thead>
+    <tr>
+        <th align="center" colspan="3" style="font-size: 4pt; padding: 1px 0px 1px 0px">Partida</th>
+        <th align="center" colspan="4" style="font-size: 4pt; padding: 1px 0px 1px 0px">Código</th>
+        <th align="center" colspan="5" style="font-size: 4pt; padding: 1px 0px 1px 0px">Código<br/>clave</th>
+        <th align="center" colspan="18" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">
+            <table class="desglose_table" style="width: 100%; ">
+                <tr>
+                    <th colspan="20" align="center" style="font-size: 4pt;  padding: 1px 0px 1px 0px">Descripción</th>
+                </tr>
+                <tr >
+                    <td colspan="4" style="font-size: 4pt;  padding-top: 1px;  padding-bottom: 1px;">Base</td>
+                    <td colspan="4" style="font-size: 4pt;  padding-top: 1px;  padding-bottom: 1px;">Impuesto</td>
+                    <td colspan="4" style="font-size: 4pt;  padding-top: 1px;  padding-bottom: 1px;">Factor</td>
+                    <td colspan="4" style="font-size: 4pt;  padding-top: 1px;  padding-bottom: 1px;">Tasa</td>
+                    <td colspan="4" style="font-size: 4pt;  padding-top: 1px;  padding-bottom: 1px;">Importe</td>
+                </tr>
+            </table></th>
+
+        <th align="center" colspan="3" style="font-size: 4pt; padding: 1px 0px 1px 0px">Clave<br/>SAT</th>
+        <th align="center" colspan="3" style="font-size: 4pt; padding: 1px 0px 1px 0px">Unidad</th>
+        <th align="center" colspan="6" style="font-size: 4pt; padding: 1px 0px 1px 0px">UPC</th>
+        <th align="center" colspan="3" style="font-size: 4pt; padding: 1px 0px 1px 0px">Cant.</th>
+        <th align="center" colspan="4" style="font-size: 4pt; padding: 1px 0px 1px 0px"><center>Precio sin<br/>impuesto</center></th>
+        <th align="center" colspan="4" style="font-size: 4pt; padding: 1px 0px 1px 0px">Impuesto</th>
+        <th align="center" colspan="4" style="font-size: 4pt; padding: 1px 0px 1px 0px">Descuento</th>
+        <th align="center" colspan="4" style="font-size: 4pt; padding: 1px 0px 1px 0px">Subtotal</th>
+    </tr>
+
+    </thead>
+</#if>
+
+<#if item.custcol_efx_esartenvio_linea == true && item.itemtype == 'Service'>
+<#assign "shipmentcost" += item.rate>
+</#if>
+
+<#if (item.rate gt 0) >
+<#assign "linecount" += 1/>
+
+
+<#assign "ratewithdiscount" = item.rate/>
+<#assign "discountamount" = 0/>
+<#if ((item_index + 1) lt record.item?size) >
+<#if (record.item[item_index + 1].rate lt 0) >
+<#assign "ratewithdiscount" = (item.rate * (1 + record.item[item_index + 1].rate))/>
+<#assign "discountamount" = record.item[item_index + 1].amount/>
+<#assign totaldiscount += discountamount/>
+</#if>
+</#if>
+
+<tr>
+    <#assign "desglose_json" = item.custcol_efx_fe_tax_json>
+    <#assign "desglose" = desglose_json?eval>
+
+    <td align="center" colspan="3" line-height="150%" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px">${(linecount)?string['0']}</td>
+    <td align="center" colspan="4" line-height="150%" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px">${item.item?keep_before(" ")}</td>
+    <td align="center" colspan="5" line-height="150%" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px">${item.custcol_mx_txn_line_sat_item_code?keep_before(" ")}</td>
+
+    <td colspan="18" style="border-left: 1px; border-color: #e3e3e3;font-size: 5pt padding-top:5px;" align="center">
+        <table class="desglose_table"  style="width: 100%">
+            <tr style="padding:2px 0px 0px 0px;">
+                <td colspan="20" style="font-size: 5pt; padding:0px 0px;">${item.description}</td>
+            </tr>
+            <#if desglosa_cliente==true>
+            <#assign key = desglose.ieps.name/>
+            <#if desglose.ieps.name?has_content>
+
+            <tr style="padding:0px 0px;">
+                <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.ieps.base_importe?number?string[",##0.00"]}</td>
+                <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.ieps.name}</td>
+                <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.ieps.factor}</td>
+                <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.ieps.rate?string[",##0.00"]}%</td>
+                <td align="right" colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.ieps.importe?number?string[",##0.00"]}</td>
+            </tr>
+        </#if>
+    </#if>
+    <#if desglose.iva.name?has_content>
+
+<tr style="padding:0px 0px;">
+    <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.iva.base_importe?number?string[",##0.00"]}</td>
+    <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.iva.name}</td>
+    <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.iva.factor}</td>
+    <td colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.iva.rate?string[",##0.00"]}%</td>
+    <td align="right" colspan="4" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${desglose.iva.importe?number?string[",##0.00"]}</td>
+</tr>
+</#if>
+
+</table>
+
+</td>
+
+<#if item.units?has_content>
+
+<#if obj_cajas?has_content>
+<#list obj_cajas?keys as key>
+<#assign "conteos" = 0>
+<#if key == item.units>
+<#assign "conteos" = 1>
+
+<#assign "cantidad" = obj_cajas[key] + item.quantity>
+<#assign "obj_cajas"= obj_cajas + {item.units : cantidad}>
+
+</#if>
+
+<#assign "keyses"= obj_cajas[key]>
+</#list>
+<#if conteos == 0>
+<#assign "obj_cajas"= obj_cajas + {item.units : item.quantity}>
+</#if>
+<#else>
+<#assign "obj_cajas"= obj_cajas + {item.units : item.quantity}>
+<#list obj_cajas?keys as key>
+<#assign "keyses"= obj_cajas[key]>
+</#list>
+</#if>
+
+
+<#assign "unidades_text" = item.units>
+<#assign "cantidad" = item.quantity>
+<#assign "cantidad_cajas" = 0>
+<#assign "caracter_units" = unidades_text?substring(0, 1)>
+
+<#if item.itemtype == 'InvtPart'>
+
+<#if caracter_units=="C">
+<#assign "cantidad_cajas_text" = unidades_text?replace("C", "")>
+<#assign "cantidad_cajas" = cantidad_cajas_text?number>
+<#assign total_cajas += item.quantity>
+<#assign "piezas_caja" = cantidad_cajas * cantidad>
+<#assign total_piezas += piezas_caja>
+<#else>
+<#assign total_piezas += item.quantity>
+</#if>
+</#if>
+</#if>
+
+<#if item.units == "">
+<#assign "units_sat" = "">
+
+<#else>
+
+<#if caracter_units=="C">
+<#assign "units_sat" = "XBX">
+<#else>
+<#if item.units == "ANT">
+<#assign "units_sat" = "ACT">
+</#if>
+<#if item.units == "SERV">
+<#assign "units_sat" = "ACT">
+</#if>
+<#if item.units == "GR">
+<#assign "units_sat" = "GRM">
+</#if>
+<#if item.units == "KG">
+<#assign "units_sat" = "KGM">
+</#if>
+<#if item.units == "ML">
+<#assign "units_sat" = "MLT">
+</#if>
+<#if item.units == "L">
+<#assign "units_sat" = "LTR">
+</#if>
+<#if item.units == "PZA">
+<#assign "units_sat" = "H87">
+</#if>
+</#if>
+</#if>
+
+
+<td colspan="3" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;">${units_sat}</td>
+<td colspan="3" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;">${item.units}</td>
+<td colspan="6" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;">${item.custcol_efx_fe_upc_code}</td>
+<td align="center" colspan="3" line-height="150%" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;">${item.quantity?string['0']}</td>
+<td align="right" colspan="4" style="border-left: 1px; border-color: #e3e3e3; font-size: 4pt; padding-top:5px;">
+    <#assign "totalimp" =  0>
+    <#assign "discountamount" = 0/>
+    <#assign "discounttax" = 0/>
+    <#if desglose.ieps.importe?has_content> <#assign "iepstax" = desglose.ieps.importe?number/><#else><#assign "iepstax" = 0/></#if>
+<#if ((item_index + 1) lt record.item?size) >
+<#if (record.item[item_index + 1].rate lt 0) >
+<#assign "discountamount" = record.item[item_index + 1].amount/>
+<#assign "discounttax" += record.item[item_index + 1].tax1amt/>
+</#if>
+</#if>
+<#if desglose.ieps.name?has_content && desglosa_cliente!=true>
+<#assign "ratevalue" = desglose.iva.base_importe>
+<#assign "rateieps" = ((item.rate + discountamount) * (1 + (desglose.ieps.rate /100)))/>
+<#else>
+<#assign "ratevalue" = (item.amount + discountamount)>
+<#assign "rateieps" = item.rate/>
+</#if>
+
+
+<#if desglosa_cliente==true>
+<#assign "subtotalwithieps" += item.rate * item.quantity>
+<#assign "totalimp" +=  item.tax1amt + discounttax>
+<#else>
+<#assign "totalimp" +=  item.tax1amt + discounttax  - iepstax>
+<#assign "subtotalwithieps" += rateieps * item.quantity>
+</#if>
+
+
+
+<#if desglosa_cliente==true>${item.rate?string[',##0.000']}<#else>${rateieps?string[',##0.000']}</#if></td>
+<td align="right" colspan="4" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt;padding-top:5px;">
+    ${totalimp?string[',##0.000']}  </td>
+<td align="right" colspan="4" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;">
+    ${discountamount?abs?string[',##0.00']}</td>
+<td align="right" colspan="4" style="border-left: 1px; border-color: #e3e3e3;font-size: 4pt; padding-top:5px;"><#if desglosa_cliente==true>${(item.rate * item.quantity)?string[',##0.00']}<#else>${(rateieps * item.quantity)?string[',##0.00']}</#if></td>
+</tr>
+</#if>
+</#list></table>
+
+<table class="total" style="width: 100%; margin-top: 10px; border: 1px; border-color: #e3e3e3;">
+    <#assign "desglose_json_body" = record.custbody_efx_fe_tax_json>
+    <#assign "desglose_body" = desglose_json_body?eval>
+    <#assign "desglose_ieps" = desglose_body.rates_ieps>
+    <#assign "desglose_iva" = desglose_body.rates_iva>
+    <#assign "ieps_total" = desglose_body.ieps_total>
+    <#assign "iva_total" = desglose_body.iva_total>
+    <#assign "desglose_ret" = desglose_body.rates_retencion>
+    <#assign "desglose_loc" = desglose_body.rates_local>
+    <#assign "desglose_total_discount" = desglose_body.descuentoSinImpuesto>
+    <tr>
+        <td align="left" colspan="3" style="border-bottom: 1px; border-color: #e3e3e3; font-size: 7pt;"><strong>Cantidad con letra:</strong> ${record.custbody_efx_fe_total_text}</td>
+    </tr>
+    <tr>
+        <td align="left" style="border-right: 1px; border-bottom: 1px; border-color: #e3e3e3; font-size: 7pt;"><strong>Elaboró: </strong>${record.custbody_efx_cmp_elaboro.firstname?upper_case} ${record.custbody_efx_cmp_elaboro.lastname?upper_case}</td>
+        <td align="left" style="border-right: 1px;  border-color: #e3e3e3; font-size: 7pt;"><strong>Total de piezas: </strong>${total_piezas?string['0']}</td>
+        <td align="left" style= "font-size: 7pt;"><strong>Total de cartones: </strong>${record.custbody_efx_fe_total_box}</td>
+    </tr>
+</table>
+
+<table style="width: 100%; margin-top: 5px; padding: 0; border: 1px; border-color: #e3e3e3;">
+    <tr>
+        <td colspan="6" style="margin: 0px; padding: 0;">
+            <table style="width: 100%; margin: 0px; padding: 0; border: 0px; border-color: #e3e3e3;">
+                <tr>
+                    <th colspan="6">Detalles del comprobante</th>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt;"><b>Tipo de comprobante:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">INGRESO</td>
+                    <td colspan="1" style="font-size: 7pt;"><b>Forma de pago:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.custbody_mx_txn_sat_payment_method?upper_case}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt;"><b>Moneda:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.currency?upper_case}</td>
+                    <td colspan="1" style="font-size: 7pt;"><b>Método de pago:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.custbody_mx_txn_sat_payment_term?upper_case}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt;"><b>Uso del CFDI:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.custbody_mx_cfdi_usage?upper_case}</td>
+                    <td colspan="1" style="font-size: 7pt;"><b>Lugar de expedici&oacute;n:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.location.custrecord_efx_lugar_expedicion?upper_case}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt;"><b>Régimen fiscal:</b></td>
+                    <td colspan="2" style="font-size: 7pt;">${record.subsidiary.custrecord_mx_sat_industry_type?upper_case}</td>
+                </tr>
+
+            </table>
+        </td>
+
+        <td colspan="2" style="margin: 0px; padding: 0;">
+            <table style="width: 100%; margin-top: 0px; margin-left: 0px; border: 0px; border-color: #e3e3e3;">
+                <tr>
+                    <th colspan="2" style="border-left: 1px; border-color: #e3e3e3;">Resumen:</th>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"><b>Subtotal</b></td>
+                    <td align="right" colspan="1" style="font-size: 7pt;">${(subtotalwithieps - shipmentcost)?string[",##0.00"]}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"><b>Envío</b></td>
+                    <td align="right" colspan="1" style="font-size: 7pt;">${shipmentcost?string[",##0.00"]}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"><b>Descuento</b></td>
+                    <td align="right" colspan="1" style="font-size: 7pt;">${desglose_total_discount?number?string[",##0.00"]}</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"><b>IVA</b></td>
+                    <td align="right" colspan="1" style="font-size: 7pt;">${iva_total?number?string[",##0.00"]}</td>
+                </tr>
+
+                <#if desglosa_cliente==true>
+                <tr>
+                    <td colspan="2" style="font-size: 5pt; border-left: 1px; border-color: #e3e3e3;">
+                        <#list desglose_iva as name_iva, price_iva>
+                        <#if price_iva?is_string>
+                        ${name_iva}: ${price_iva?number?string[",##0.00"]}<br/>
+                        <#else>
+                        ${name_iva}: ${price_iva?string[",##0.00"]}<br/>
+                    </#if>
+                </#list>
+                </td>
+                </tr>
+
+                <tr>
+                    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"> <b>IEPS</b></td>
+                    <td align="right" colspan="1" style="font-size: 7pt;">${ieps_total?number?string[",##0.00"]}</td>
+                </tr>
+            </#if>
+            <#if desglosa_cliente==true>
+    <tr>
+        <td colspan="2" style="font-size: 5pt; border-left: 1px; border-color: #e3e3e3;">
+            <#list desglose_ieps as name_ieps, price_ieps>
+            ${name_ieps}: ${price_ieps?number?string[",##0.00"]}<br/>
+        </#list>
+        </td>
+    </tr>
+</#if>
+<tr>
+    <td colspan="1" style="font-size: 7pt; border-left: 1px; border-color: #e3e3e3;"><b>Total</b></td>
+    <td align="right" colspan="1" style="font-size: 7pt;">${record.total?string[",##0.00"]}</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!--CODIGO RAUL FIN-->
+</#if>
+
+<table style=" margin-top: 5px;">
+    <tr>
+        <th colspan="1"><b>Politicas de Devoluci&oacute;n</b></th>
+    </tr>
+    <tr>
+        <td colspan="1" style="font-size: 7pt; border-color: #e3e3e3;">
+            - Solo se podrán realizar 30 días naturales posteriores a la fecha de emisión de la factura y para clientes Vinoclub a partir de la fecha de recepción. <br/>
+            - No se aceptan devoluciones sobre producto dañado, refrigerado, destruido y/o caduco.<br/>
+            - En facturas de eventos solo será posible regresar el 30% del valor de la factura en producto.<br/>
+            - En facturas de eventos Wine Planner no se aceptan devoluciones.<br/>
+            - No se aceptan devoluciones en promociones que incluyan dos a más productos bajo un mismo precio de venta.<br/>
+            - En caso de recibir nuestro producto por medio de paquetería la solicitud de devolución deberá realizarse dentro de las primeras 48 horas siguientes a la recepción, especificando la razón de esta, motivo y su evidencia fotográfica.
+        </td>
+    </tr>
+</table>
+<#if record.recmachcustrecord_mx_rcs_orig_trans?has_content>
+<table style = "width:100%;">
+    <tr>
+        <th align="center" colspan="2" style="font-size: 7pt; border-color: #e3e3e3;"><b>Factura Relacionada</b></th>
+        <th align="center" colspan="2" style="font-size: 7pt; border-color: #e3e3e3;"><b>UUID</b></th>
+        <th align="center" colspan="2" style="font-size: 7pt; border-color: #e3e3e3;"><b>Tipo de relación</b></th>
+    </tr>
+
+    <#list record.recmachcustrecord_mx_rcs_orig_trans as cfdiRel>
+
+    <tr>
+        <td colspan="2">${cfdiRel.custrecord_mx_rcs_rel_cfdi?keep_after("#")} </td>
+        <td colspan="2">${cfdiRel.custrecord_mx_rcs_uuid} </td>
+        <td colspan="2">${cfdiRel.custrecord_mx_rcs_rel_type} </td>
+    </tr>
+</#list>
+
+</table>
+</#if>
+
+
+<#if certData?has_content>
+<table class="total" style="width: 100%; margin-top: 10px; border-left: 1px; border-color: #e3e3e3;"><tr>
+    <td style="background-color: #e3e3e3; color: #333333;font-weight: bold;">Información CFDI</td>
+</tr>
+    <tr>
+        <td style="border-left: 1px;border-right: 1px; border-color: #e3e3e3;font-size:90%;"><b>UUID</b><br/>${certData.custbody_mx_cfdi_uuid}</td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px;border-right: 1px; border-color: #e3e3e3;font-size:90%;"><b>Cadena original</b><br/>${certData.custbody_mx_cfdi_cadena_original}</td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px;border-right: 1px; border-color: #e3e3e3;font-size:90%;"><b>Firma del CFDI</b><br/>${certData.custbody_mx_cfdi_signature}</td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px;border-right: 1px; border-color: #e3e3e3;font-size:90%;"><b>Firma del SAT</b><br/>${certData.custbody_mx_cfdi_sat_signature}</td>
+
+    </tr>
+    <tr>
+        <td style="border-left: 1px;border-right: 1px; border-bottom: 1px; border-color: #e3e3e3;">
+            <table align="left" style="width: 100%; margin-top: 10px;"><tr>
+                <#assign qrcodeImage = "data:image/png;base64, " + certData.custbody_mx_cfdi_qr_code >
+                <td align="center">
+                    <img style="width: 100px;height:100px" src="${qrcodeImage}" /></td>
+            </tr>
+                <tr>
+                    <td align="center"></td>
+                </tr></table>
+        </td>
+
+    </tr></table>
+</#if>
+
+
+
+</body>
+</pdf>

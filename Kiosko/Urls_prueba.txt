@@ -1,0 +1,3 @@
+https://tstdrv2220309.app.netsuite.com/app/site/hosting/scriptlet.nl?script=826&deploy=1&compid=TSTDRV2220309&custparam_rfc=RALM920512HG8&custparam_tranid=INV10000176&custparam_monto=1080&custparam_fecha=28/08/2020&custparam_getinfo=T
+https://tstdrv2220309.app.netsuite.com/app/site/hosting/scriptlet.nl?script=826&deploy=1&compid=TSTDRV2220309&custparam_rfc=RALM920512HG8&custparam_tranid=INV10000176&custparam_monto=1080&custparam_genera=T
+https://tstdrv2220309.app.netsuite.com/app/site/hosting/scriptlet.nl?script=826&deploy=1&compid=TSTDRV2220309&custparam_certifica=T&transId=7965&transType=invoice

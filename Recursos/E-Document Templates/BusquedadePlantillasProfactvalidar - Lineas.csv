@@ -1,0 +1,98 @@
+Internal ID,Name,E-Document Template,XPath,RegEx Validation Expression,Script ID
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@Version,/\S/,VAL_61642_T2220345_363
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@Fecha,/\S/,VAL_61643_T2220345_506
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@Cantidad,/\S/,VAL_61658_T2220345_661
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@ClaveProdServ,/\S/,VAL_61657_T2220345_877
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@ClaveUnidad,/\S/,VAL_61656_T2220345_659
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@Importe,/\S/,VAL_61655_T2220345_464
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@Descripcion,/\S/,VAL_61654_T2220345_513
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/cfdi:Receptor/@UsoCFDI,/\S/,VAL_61653_T2220345_851
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/cfdi:Receptor/@Rfc,/\S/,VAL_61652_T2220345_882
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/cfdi:Emisor/@RegimenFiscal,/\S/,VAL_61651_T2220345_949
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/cfdi:Emisor/@Rfc,/\S/,VAL_61650_T2220345_113
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@LugarExpedicion,/\S/,VAL_61649_T2220345_743
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@TipoDeComprobante,/\S/,VAL_61648_T2220345_477
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@Total,/\S/,VAL_61647_T2220345_624
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@TipoCambio,/\S/,VAL_61646_T2220345_538
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@Moneda,/\S/,VAL_61645_T2220345_306
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,cfdi:Comprobante/@SubTotal,/\S/,VAL_61644_T2220345_577
+12,ProFact outbound cash sale template,ProFact outbound cash sale template,//cfdi:Concepto/@ValorUnitario,/\S/,VAL_61659_T2220345_682
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@Cantidad,/\S/,VAL_61680_T2220345_388
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@ClaveProdServ,/\S/,VAL_61679_T2220345_488
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@ClaveUnidad,/\S/,VAL_61678_T2220345_232
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@Importe,/\S/,VAL_61677_T2220345_605
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@Descripcion,/\S/,VAL_61676_T2220345_125
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:CfdiRelacionado/@UUID,/\S/,VAL_61675_T2220345_441
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:CfdiRelacionados/@TipoRelacion,/\S/,VAL_61674_T2220345_135
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/cfdi:Receptor/@UsoCFDI,/\S/,VAL_61673_T2220345_471
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/cfdi:Receptor/@Rfc,/\S/,VAL_61672_T2220345_829
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/cfdi:Emisor/@RegimenFiscal,/\S/,VAL_61671_T2220345_189
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/cfdi:Emisor/@Rfc,/\S/,VAL_61670_T2220345_118
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@LugarExpedicion,/\S/,VAL_61669_T2220345_898
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@TipoDeComprobante,/\S/,VAL_61668_T2220345_265
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@Total,/\S/,VAL_61667_T2220345_260
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@TipoCambio,/\S/,VAL_61666_T2220345_813
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@Moneda,/\S/,VAL_61665_T2220345_957
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@SubTotal,/\S/,VAL_61664_T2220345_550
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@Fecha,/\S/,VAL_61663_T2220345_755
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,//cfdi:Concepto/@ValorUnitario,/\S/,VAL_61681_T2220345_778
+13,ProFact outbound credit memo template,ProFact outbound credit memo template,cfdi:Comprobante/@Version,/\S/,VAL_61662_T2220345_419
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@Version,/\S/,VAL_61723_T2220345_585
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@Fecha,/\S/,VAL_61724_T2220345_150
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@SubTotal,/\S/,VAL_61725_T2220345_691
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@Moneda,/\S/,VAL_61726_T2220345_772
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@Total,/\S/,VAL_61727_T2220345_814
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@TipoDeComprobante,/\S/,VAL_61728_T2220345_462
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/@LugarExpedicion,/\S/,VAL_61729_T2220345_248
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/cfdi:Emisor/@Rfc,/\S/,VAL_61730_T2220345_699
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/cfdi:Emisor/@RegimenFiscal,/\S/,VAL_61731_T2220345_960
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/cfdi:Receptor/@Rfc,/\S/,VAL_61732_T2220345_773
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,cfdi:Comprobante/cfdi:Receptor/@UsoCFDI,/\S/,VAL_61733_T2220345_762
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@Descripcion,/\S/,VAL_61734_T2220345_955
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@Importe,/\S/,VAL_61735_T2220345_787
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@ClaveUnidad,/\S/,VAL_61736_T2220345_700
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@ClaveProdServ,/\S/,VAL_61737_T2220345_896
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@Cantidad,/\S/,VAL_61738_T2220345_307
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//cfdi:Concepto/@ValorUnitario,/\S/,VAL_61739_T2220345_978
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:Pagos/@Version,/\S/,VAL_61740_T2220345_315
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:Pago/@FechaPago,/\S/,VAL_61741_T2220345_478
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:Pago/@MonedaP,/\S/,VAL_61742_T2220345_317
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:Pago/@Monto,/\S/,VAL_61743_T2220345_605
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:DoctoRelacionado/@IdDocumento,/\S/,VAL_61744_T2220345_689
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:DoctoRelacionado/@MonedaDR,/\S/,VAL_61745_T2220345_626
+16,ProFact outbound customer payment template,ProFact outbound customer payment template,//pago10:DoctoRelacionado/@MetodoDePagoDR,/\S/,VAL_61746_T2220345_926
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@Version,/\S/,VAL_61684_T2220345_399
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@Fecha,/\S/,VAL_61685_T2220345_259
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@ValorUnitario,/\S/,VAL_61701_T2220345_567
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@Cantidad,/\S/,VAL_61700_T2220345_643
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@ClaveProdServ,/\S/,VAL_61699_T2220345_437
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@ClaveUnidad,/\S/,VAL_61698_T2220345_472
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@Importe,/\S/,VAL_61697_T2220345_737
+14,ProFact outbound invoice template,ProFact outbound invoice template,//cfdi:Concepto/@Descripcion,/\S/,VAL_61696_T2220345_320
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/cfdi:Receptor/@UsoCFDI,/\S/,VAL_61695_T2220345_321
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/cfdi:Receptor/@Rfc,/\S/,VAL_61694_T2220345_495
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/cfdi:Emisor/@RegimenFiscal,/\S/,VAL_61693_T2220345_459
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/cfdi:Emisor/@Rfc,/\S/,VAL_61692_T2220345_146
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@LugarExpedicion,/\S/,VAL_61691_T2220345_903
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@TipoDeComprobante,/\S/,VAL_61690_T2220345_763
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@Total,/\S/,VAL_61689_T2220345_568
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@TipoCambio,/\S/,VAL_61688_T2220345_165
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@Moneda,/\S/,VAL_61687_T2220345_875
+14,ProFact outbound invoice template,ProFact outbound invoice template,cfdi:Comprobante/@SubTotal,/\S/,VAL_61686_T2220345_811
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@Cantidad,/\S/,VAL_61719_T2220345_382
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@ValorUnitario,/\S/,VAL_61720_T2220345_923
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@ClaveUnidad,/\S/,VAL_61717_T2220345_426
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@Importe,/\S/,VAL_61716_T2220345_567
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@Descripcion,/\S/,VAL_61715_T2220345_579
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/cfdi:Receptor/@UsoCFDI,/\S/,VAL_61714_T2220345_785
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/cfdi:Receptor/@Rfc,/\S/,VAL_61713_T2220345_841
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/cfdi:Emisor/@RegimenFiscal,/\S/,VAL_61712_T2220345_748
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/cfdi:Emisor/@Rfc,/\S/,VAL_61711_T2220345_413
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@LugarExpedicion,/\S/,VAL_61710_T2220345_439
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@TipoDeComprobante,/\S/,VAL_61709_T2220345_266
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@Total,/\S/,VAL_61708_T2220345_147
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@Moneda,/\S/,VAL_61707_T2220345_596
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@SubTotal,/\S/,VAL_61706_T2220345_119
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@Fecha,/\S/,VAL_61705_T2220345_877
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,cfdi:Comprobante/@Version,/\S/,VAL_61704_T2220345_324
+15,ProFact outbound item fulfillment template,ProFact outbound item fulfillment template,//cfdi:Concepto/@ClaveProdServ,/\S/,VAL_61718_T2220345_123
