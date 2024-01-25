@@ -537,39 +537,6 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                         // }
                                     }
 
-
-                                    if (!noDollar) {
-
-                                        log.audit({ title: 'formula_t', details: formula_t });
-                                        if (recType == modRecord.Type.ITEM_FULFILLMENT) {
-                                            var unitAduana = unit_price / datae;
-                                        } else {
-                                            var unitAduana = unit_price / formula_t;
-                                        }
-
-                                    }
-                                    log.audit({ title: 'unitAduana', details: unitAduana });
-                                    if (recType == modRecord.Type.ITEM_FULFILLMENT) {
-                                        var unitAduana = resultup;
-                                    }
-
-                                    var valAduana = runtime.getCurrentScript().getParameter({ name: 'custscript_tko_calc_val_aduana' });
-                                    log.audit({ title: 'valAduana', details: valAduana });
-
-                                    if (valAduana || valAduana == true || valAduana == 'true' || valAduana == 'T') {
-                                        if (unitAduana) {
-                                            unitAduana = unitAduana.toFixed(2);
-                                            record.setSublistValue({
-                                                sublistId: 'item',
-                                                fieldId: 'custcol_efx_fe_ce_val_uni_aduana',
-                                                value: unitAduana,
-                                                line: l
-                                            });
-                                        }
-                                    } else {
-                                        log.audit({ title: 'valAduana (ELSE)', details: valAduana });
-                                    }
-
                                     var valordedolares = 0;
                                     log.audit({ title: 'moneda-valordolares', details: moneda });
                                     if (moneda != 'USD' && moneda != 'MXN') {
@@ -590,6 +557,43 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
 
                                     valordedolares = valordedolares.toFixed(2);
                                     valordedolares = parseFloat(valordedolares);
+
+                                    if (!noDollar) {
+
+                                        log.audit({ title: 'formula_t', details: formula_t });
+                                        if (recType == modRecord.Type.ITEM_FULFILLMENT) {
+                                            var unitAduana = unit_price / datae;
+                                        } else {
+                                            log.audit({title:'valordedolares',details:valordedolares});
+                                            log.audit({title:'result🐛🐛',details:result});
+                                            var unitAduana = valordedolares / result;
+                                            // var unitAduana = unit_price / formula_t;
+                                        }
+
+                                    }
+                                    log.audit({ title: 'unitAduana 🦋', details: unitAduana });
+                                    if (recType == modRecord.Type.ITEM_FULFILLMENT) {
+                                        var unitAduana = resultup;
+                                    }
+
+                                    var valAduana = runtime.getCurrentScript().getParameter({ name: 'custscript_tko_calc_val_aduana' });
+                                    log.audit({ title: 'valAduana', details: valAduana });
+
+                                    if (valAduana || valAduana == true || valAduana == 'true' || valAduana == 'T') {
+                                        if (unitAduana) {
+                                            // unitAduana = unitAduana.toFixed(2);
+                                            record.setSublistValue({
+                                                sublistId: 'item',
+                                                fieldId: 'custcol_efx_fe_ce_val_uni_aduana',
+                                                value: unitAduana,
+                                                line: l
+                                            });
+                                        }
+                                    } else {
+                                        log.audit({ title: 'valAduana (ELSE)', details: valAduana });
+                                    }
+
+                                    
 
                                     if (noDollar) {
                                         totalValorDolares = totalValorDolares + valordedolares;
