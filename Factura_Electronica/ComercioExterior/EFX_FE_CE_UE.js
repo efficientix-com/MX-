@@ -160,7 +160,7 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                             var config_currency = '';
                             var local_currency = '';
                             // MOD: en factura de venta no cambia tipo de cambio al seleccionar otro
-                            if (recType == modRecord.Type.ITEM_FULFILLMENT || recType==modRecord.Type.INVOICE) {
+                            if (recType == modRecord.Type.ITEM_FULFILLMENT || recType == modRecord.Type.INVOICE) {
                                 var moneda_id_des = record.getValue({ fieldId: 'custbody_efx_fe_ce_currency' });
                                 var moneda_record_des = modRecord.load({
                                     type: modRecord.Type.CURRENCY,
@@ -201,8 +201,8 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                             if (moneda != 'USD' && moneda != 'MXN') {
                                 exchange = modcurrency.exchangeRate({
                                     source: 'USD',
-                                    target: local_currency.symbol,
-                                    //target: 'MXN',
+                                    target: 'MXN',
+                                    // target: local_currency.symbol,
                                     date: record.getValue({ fieldId: 'trandate' })
                                 }) || 0;
                                 log.audit({ title: 'exchange: ', details: exchange });
@@ -303,32 +303,32 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                 }
                                 log.audit({ title: 'local_currency: ', details: local_currency });
 
-                                var querystr =  "SELECT BaseCurrency.Symbol AS BaseSymbol, "+
-                                "TansactionCurrency.Symbol AS TransactionSymbol, "+
-                                "CurrencyRate.ExchangeRate, "+
-                                "CurrencyRate.EffectiveDate, "+
-                                "CurrencyRate.LastModifiedDate "+
-                                "FROM CurrencyRate, Currency AS BaseCurrency, Currency AS TansactionCurrency "+
-                                "WHERE ( BaseCurrency.ID = CurrencyRate.BaseCurrency ) "+
-                                "AND ( TansactionCurrency.ID = CurrencyRate.TransactionCurrency ) "+
-                                "AND ( CurrencyRate.EffectiveDate = ? ) "+
-                                "AND ( BaseCurrency.Symbol = ? ) "+
-                                "AND ( TansactionCurrency.Symbol = ? ) "+
-                                "ORDER BY CurrencyRate.id DESC" ;
+                                var querystr = "SELECT BaseCurrency.Symbol AS BaseSymbol, " +
+                                    "TansactionCurrency.Symbol AS TransactionSymbol, " +
+                                    "CurrencyRate.ExchangeRate, " +
+                                    "CurrencyRate.EffectiveDate, " +
+                                    "CurrencyRate.LastModifiedDate " +
+                                    "FROM CurrencyRate, Currency AS BaseCurrency, Currency AS TansactionCurrency " +
+                                    "WHERE ( BaseCurrency.ID = CurrencyRate.BaseCurrency ) " +
+                                    "AND ( TansactionCurrency.ID = CurrencyRate.TransactionCurrency ) " +
+                                    "AND ( CurrencyRate.EffectiveDate = ? ) " +
+                                    "AND ( BaseCurrency.Symbol = ? ) " +
+                                    "AND ( TansactionCurrency.Symbol = ? ) " +
+                                    "ORDER BY CurrencyRate.id DESC";
 
                                 var fecha_actual = record.getValue({ fieldId: 'custbody_efx_fe_actual_date' });
-                                log.audit({title: 'fecha_actual', details: fecha_actual});
+                                log.audit({ title: 'fecha_actual', details: fecha_actual });
 
                                 var fecha_tran = record.getValue({ fieldId: 'trandate' });
-                                log.audit({title: 'fecha_tran', details: fecha_tran});
+                                log.audit({ title: 'fecha_tran', details: fecha_tran });
 
                                 if (fecha_actual) {
-                                    log.debug({title: 'onRequest querystr si fecha actual es true', details: querystr});
+                                    log.debug({ title: 'onRequest querystr si fecha actual es true', details: querystr });
                                     var hoy = new Date();
-                                    log.audit({title: 'hoy', details: hoy});
+                                    log.audit({ title: 'hoy', details: hoy });
                                     var DIA_EN_MILISEGUNDOS = 24 * 60 * 60 * 1000;
                                     var ayer = new Date(hoy.getTime() - DIA_EN_MILISEGUNDOS);
-                                    log.audit({title: 'ayer', details: ayer});
+                                    log.audit({ title: 'ayer', details: ayer });
 
                                     var configRecObj = config.load({
                                         type: config.Type.USER_PREFERENCES
@@ -338,14 +338,14 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                     });
 
                                     var objDate = moment(ayer).format(dateFormat);
-                                    log.audit({title: 'objDate', details: objDate});
+                                    log.audit({ title: 'objDate', details: objDate });
                                 } else {
-                                    log.debug({title: 'onRequest querystr si fecha actual es false', details: querystr});
+                                    log.debug({ title: 'onRequest querystr si fecha actual es false', details: querystr });
                                     var hoy = fecha_tran;
-                                    log.audit({title: 'hoy', details: hoy});
+                                    log.audit({ title: 'hoy', details: hoy });
                                     var DIA_EN_MILISEGUNDOS = 24 * 60 * 60 * 1000;
                                     var ayer = new Date(hoy.getTime() - DIA_EN_MILISEGUNDOS);
-                                    log.audit({title: 'ayer', details: ayer});
+                                    log.audit({ title: 'ayer', details: ayer });
 
                                     var configRecObj = config.load({
                                         type: config.Type.USER_PREFERENCES
@@ -355,7 +355,7 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                     });
 
                                     var objDate = moment(ayer).format(dateFormat);
-                                    log.audit({title: 'objDate', details: objDate});
+                                    log.audit({ title: 'objDate', details: objDate });
                                 }
 
                                 var results = query.runSuiteQL({
@@ -364,8 +364,8 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                     customScriptId: 'customscript_fb_query_sl'
                                 }).asMappedResults();
 
-                                log.debug({title: 'onRequest columns', details: results.columns});
-                                log.debug({title: 'onRequest types', details: results.types});
+                                log.debug({ title: 'onRequest columns', details: results.columns });
+                                log.debug({ title: 'onRequest types', details: results.types });
                                 log.audit({ title: 'results: ', details: results });
 
                                 exchange = results[0].exchangerate;
@@ -386,6 +386,16 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                         }
 
                         log.audit({ title: 'exchange: ', details: exchange });
+                        var check_tc_manual = record.getValue({
+                            fieldId: "custbody_mx_plus_tc_manual"
+                        });
+                        // MOD: 22/01/2024 Si usuario quiso poner el tipo de cambio manual, entonces exchange hay que igualarlo con el valor que tenga en CE tipo de cambio
+                        if (check_tc_manual == 'T' || check_tc_manual == true) {
+                            log.debug({ title: 'Usa tipo de cambio 💡', details: 'manual' });
+                            exchange = record.getValue({
+                                fieldId: "custbody_efx_fe_ce_exchage"
+                            });
+                        }
 
                         record.setValue({ fieldId: 'custbody_efx_fe_ce_exchage', value: exchange });
 
@@ -523,7 +533,7 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                         //     var unitAduana = unit_price * (t_cambio * datae);
                                         // }else{
 
-                                            var unitAduana = unit_price * (t_cambio / datae);
+                                        var unitAduana = unit_price * (t_cambio / datae);
                                         // }
                                     }
 
@@ -570,10 +580,10 @@ define(['N/log', 'N/record', 'N/search', 'N/currency', 'N/config', 'N/runtime', 
                                         // lineas 563,567 y 570 (solo se agregó condición)
                                         // if(moneda=='MXN'){
 
-                                            // valordedolares = total_item_price * datae;
+                                        // valordedolares = total_item_price * datae;
                                         // }else{
-                                            
-                                            valordedolares = total_item_price / datae;
+
+                                        valordedolares = total_item_price / datae;
                                         // }
                                         log.audit({ title: 'valordedolares-noeur', details: valordedolares });
                                     }
