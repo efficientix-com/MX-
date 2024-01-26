@@ -775,31 +775,26 @@ define(['N/record', 'N/file', 'N/runtime', 'N/format', 'N/xml', 'N/search', 'N/c
                     }
 
 
-                    if(pagometodo){
-                        log.audit('metodo de pago', cliente.getValue('custentity_efx_mx_payment_method'))
-                        record_now.setValue({
-                            fieldId: 'custbody_mx_txn_sat_payment_method',
-                            value: pagometodo
-                        });
-                    }
+                    // if(pagometodo){
+                    //     log.audit('metodo de pago', cliente.getValue('custentity_efx_mx_payment_method'))
+                    //     record_now.setValue({
+                    //         fieldId: 'custbody_mx_txn_sat_payment_method',
+                    //         value: pagometodo
+                    //     });
+                    // }
 
 
-                    if(pagoforma){
-                        log.audit('forma de pago', cliente.getValue('custentity_efx_mx_payment_term'))
-                        record_now.setValue({
-                            fieldId: 'custbody_mx_txn_sat_payment_term',
-                            value: pagoforma
-                        });
-                    }
+                    // if(pagoforma){
+                    //     log.audit('forma de pago', cliente.getValue('custentity_efx_mx_payment_term'))
+                    //     record_now.setValue({
+                    //         fieldId: 'custbody_mx_txn_sat_payment_term',
+                    //         value: pagoforma
+                    //     });
+                    // }
 
                 }
             }
-            if (recType == record.Type.INVOICE || recType == record.Type.CASH_SALE || recType == record.Type.CREDIT_MEMO || recType == record.Type.CUSTOMER_PAYMENT || recType == record.Type.ITEM_FULFILLMENT || recType == record.Type.TRANSFER_ORDER) {
-                if(record_now.id){
-                // mod, se comentó, linea de abajo
-                    // agregaPlantillas(context, record_now, recType);
-                }
-            }
+            
 
 
         }
@@ -1613,10 +1608,21 @@ define(['N/record', 'N/file', 'N/runtime', 'N/format', 'N/xml', 'N/search', 'N/c
                 var respuesta = JSON.parse(response.body);
 
                 //Parametros obtenidos para validacion del acceso
-                habilitado = respuesta.enabled;
-                showMessage = respuesta.showMessage;
-                messageDetail = respuesta.messageDetail;
-                isBloqued = respuesta.isBloqued;
+                log.audit({title:'response.code',details:response.code});
+                if(response.code==200){
+
+                    habilitado = respuesta.enabled;
+                    showMessage = respuesta.showMessage;
+                    messageDetail = respuesta.messageDetail;
+                    isBloqued = respuesta.isBloqued;
+                }else{
+                    //MOD: 26/01/2024 en caso de no tener una respuesta de deployment, siga habilitado facturación por el caso de que se cae la instancia de deployment
+                    habilitado = true;
+                    showMessage = false;
+                    messageDetail = '';
+                    isBloqued = false;
+                    
+                }
                 log.audit({ title: 'Respuesta:', details: respuesta });
                 if (!habilitado ) {
                     form.removeButton({ id: 'submitter' });

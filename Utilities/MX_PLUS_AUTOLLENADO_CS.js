@@ -163,7 +163,7 @@ define(["N/log", "N/record", "N/search", "N/currentRecord", 'N/ui/message'], /**
               fieldId: 'custbody_mx_txn_sat_payment_method',
               value: 3
             });
-            
+
           } else {
             curr_record.setValue({
               fieldId: 'custbody_mx_txn_sat_payment_method',
@@ -189,6 +189,12 @@ define(["N/log", "N/record", "N/search", "N/currentRecord", 'N/ui/message'], /**
               value: 3
             });
 
+          }else if(curr_record.type=='creditmemo'){
+            // Si es notas de crédito entonces poner forma de pago a 4 (PPD) por ser lista bloqueada
+            curr_record.setValue({
+              fieldId: 'custbody_mx_txn_sat_payment_term',
+              value: 4
+            });
           } else {
             curr_record.setValue({
               fieldId: 'custbody_mx_txn_sat_payment_term',
@@ -206,10 +212,19 @@ define(["N/log", "N/record", "N/search", "N/currentRecord", 'N/ui/message'], /**
     function set_cfdiUsage(curr_record, client_cfdi_usage) {
       try {
         if (client_cfdi_usage && curr_record) {
-          curr_record.setValue({
-            fieldId: "custbody_mx_cfdi_usage",
-            value: client_cfdi_usage,
-          });
+          if (curr_record.type === 'customerpayment') {
+            // Si es pago entonces poner uso de cfdi a CP01 Pagos
+            curr_record.setValue({
+              fieldId: "custbody_mx_cfdi_usage",
+              value: 24
+            });
+          } else {
+
+            curr_record.setValue({
+              fieldId: "custbody_mx_cfdi_usage",
+              value: client_cfdi_usage,
+            });
+          }
 
           return true;
         } else {
